@@ -27,6 +27,12 @@ class _LoginPageState extends State<LoginPage>
   late Animation<double> _iconAnimation;
   late AnimationController _iconAnimationController;
 
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  final formKey = GlobalKey<FormState>();
+
+  late String _email;
+  late String _password;
+
   @override
   void initState() {
     super.initState();
@@ -39,6 +45,29 @@ class _LoginPageState extends State<LoginPage>
 
     _iconAnimation.addListener(() => setState(() {}));
     _iconAnimationController.forward();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  void _submit() {
+    final form = formKey.currentState;
+    if (form!.validate()) {
+      form.save();
+
+      performLogin();
+    }
+  }
+
+  void performLogin() {
+    final snackBar = SnackBar(
+      content: Text("Email: $_email, password: $_password"),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -71,6 +100,7 @@ class _LoginPageState extends State<LoginPage>
                   Container(
                     padding: const EdgeInsets.all(40.0),
                     child: Form(
+                        key: formKey,
                         autovalidateMode: AutovalidateMode.always,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -81,6 +111,9 @@ class _LoginPageState extends State<LoginPage>
                                 fillColor: Colors.white,
                               ),
                               keyboardType: TextInputType.emailAddress,
+                              validator: (val) =>
+                                  !val!.contains('@') ? 'Invalid Email' : null,
+                              onSaved: (val) => _email = val!,
                             ),
                             TextFormField(
                               decoration: const InputDecoration(
@@ -88,6 +121,9 @@ class _LoginPageState extends State<LoginPage>
                               ),
                               obscureText: true,
                               keyboardType: TextInputType.text,
+                              validator: (val) =>
+                                  val!.length < 6 ? 'Password too short' : null,
+                              onSaved: (val) => _password = val!,
                             ),
                             const Padding(
                               padding: EdgeInsets.only(top: 60.0),
@@ -100,7 +136,7 @@ class _LoginPageState extends State<LoginPage>
                               textColor: Colors.white,
                               child:
                                   const Icon(FontAwesomeIcons.rightToBracket),
-                              onPressed: () {},
+                              onPressed: _submit,
                             )
                           ],
                         )),
