@@ -1,0 +1,39 @@
+{
+  "rides": [
+  {
+    "id": 1,
+    "title": "Dado 1",
+    "description": "Descrição do dado 1",
+    "image": "https://www.rech.com.br/blog/wp-content/uploads/2019/07/erp_siger_rotas_google_maps_13092017.jpg",
+    "date": "2022-01-01"
+  },
+  {
+    "id": 2,
+    "title": "Dado 2",
+    "description": "Descrição do dado 2",
+    "image": "https://www.rech.com.br/blog/wp-content/uploads/2019/07/erp_siger_rotas_google_maps_13092017.jpg",
+    "date": "2022-02-01"
+  },
+  {
+    "id": 3,
+    "title": "Dado 3",
+    "description": "Descrição do dado 3",
+    "image": "https://www.rech.com.br/blog/wp-content/uploads/2019/07/erp_siger_rotas_google_maps_13092017.jpg",
+    "date": "2022-03-01"
+  },
+  {
+    "id": 4,
+    "title": "Dado 4",
+    "description": "Descrição do dado 4",
+    "image": "https://www.rech.com.br/blog/wp-content/uploads/2019/07/erp_siger_rotas_google_maps_13092017.jpg",
+    "date": "2022-04-01"
+  },
+  {
+    "id": 5,
+    "title": "Dado 5",
+    "description": "Descrição do dado 5",
+    "image": "https://www.rech.com.br/blog/wp-content/uploads/2019/07/erp_siger_rotas_google_maps_13092017.jpg",
+    "date": "2022-05-01"
+  }
+]
+}
